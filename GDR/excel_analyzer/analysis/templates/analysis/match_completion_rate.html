@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Completion Rate Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+        .details {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        .completion-rate {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'landing_page' %}" style="display: inline-block; margin-bottom: 20px; text-decoration: none; color: white; background-color: #4CAF50; padding: 10px 20px; border-radius: 4px;">← Back to Questions</a>
+        
+        <h1>Match Completion Rate Analysis</h1>
+        <h2>Question 6: Daily Match Completion Rates</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Completion Rate</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stat in stats %}
+                <tr onclick="toggleDetails('details-{{ forloop.counter }}')">
+                    <td>{{ stat.EVENTDATE|date:"Y-m-d" }}</td>
+                    <td class="completion-rate">{{ stat.completion_rate }}%</td>
+                    <td>
+                        <div id="details-{{ forloop.counter }}" class="details">
+                            <p>Matches Started: {{ stat.matches_started }}</p>
+                            <p>Matches Completed: {{ stat.matches_completed }}</p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function toggleDetails(id) {
+            var element = document.getElementById(id);
+            if (element.style.display === "block") {
+                element.style.display = "none";
+            } else {
+                element.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Analysis Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .question-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .question-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .question-card h2 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+        .question-card p {
+            color: #666;
+        }
+        .question-card a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .question-card a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Analysis Dashboard</h1>
+        
+        <div class="question-grid">
+            <div class="question-card">
+                <h2>Question 1</h2>
+                <p>Percentage of Voice Chat Matches per Day</p>
+                <a href="{% url 'voice_game_percentage' %}">View Analysis</a>
+            </div>
+            
+            <div class="question-card">
+                <h2>Question 2</h2>
+                <p>Users Playing Multiple Match Types per Day</p>
+                <a href="{% url 'match_type_analysis' %}">View Analysis</a>
+            </div>
+
+            <div class="question-card">
+                <h2>Question 3</h2>
+                <p>Average Voice Chat Matches per User per Day</p>
+                <a href="{% url 'voice_chat_frequency' %}">View Analysis</a>
+            </div>
+
+            <div class="question-card">
+                <h2>Question 4</h2>
+                <p>Most Regularly Played Matchtype per User</p>
+                <a href="{% url 'most_regular_matchtype' %}">View Analysis</a>
+            </div>
+
+            <div class="question-card">
+                <h2>Question 5</h2>
+                <p>Maximum Streak of Voice Chat Matches</p>
+                <a href="{% url 'voice_chat_streak' %}">View Analysis</a>
+            </div>
+
+            <div class="question-card">
+                <h2>Question 6</h2>
+                <p>Match Completion Rate per Day</p>
+                <a href="{% url 'match_completion_rate' %}">View Analysis</a>
+            </div>
+
+            <div class="question-card">
+                <h2>Question 7</h2>
+                <p>Average Queue Waiting Times</p>
+                <a href="{% url 'queue_waiting_time' %}">View Analysis</a>
+            </div>
+
+            <div class="question-card">
+                <h2>Question 8</h2>
+                <p>Queue Cancellation Predictors</p>
+                <a href="{% url 'queue_cancellation_analysis' %}">View Analysis</a>
+            </div>
+
+            <!-- Add more question cards as needed -->
+        </div>
+    </div>
+</body>
+</html> 
